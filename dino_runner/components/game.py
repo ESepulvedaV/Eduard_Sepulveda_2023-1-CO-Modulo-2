@@ -1,6 +1,6 @@
 import pygame
 
-from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS
+from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, VOL_MUTE, VOL_MAX, VOL_MIN, VOL_UP
 from dino_runner.components.dinosaur import Dinosaur
 
 class Game:
@@ -14,6 +14,8 @@ class Game:
         self.game_speed = 20
         self.x_pos_bg = 0
         self.y_pos_bg = 380
+        self.x_pos_volume = 950
+        self.y_pos_volume = 25
         self.player = Dinosaur()
         self.music = False
 
@@ -32,13 +34,15 @@ class Game:
             if event.type == pygame.QUIT:
                 self.playing = False
 
+        self.config_vol()
+        
+
     def sound_game(self):
         if not self.music:
-            sound = pygame.mixer.Sound('sound1.mp3')
-            pygame.mixer.music.set_volume(0.1)
-            sound.play()
+            pygame.mixer.music.load('sound1.mp3')
+            pygame.mixer.music.play(-1)
             self.music = True
-            
+                  
 
     def update(self):
         user_Input = pygame.key.get_pressed()
@@ -60,3 +64,30 @@ class Game:
             self.screen.blit(BG, (image_width + self.x_pos_bg, self.y_pos_bg))
             self.x_pos_bg = 0
         self.x_pos_bg -= self.game_speed
+    
+    def config_vol(self):
+        keys = pygame.key.get_pressed()
+
+        if keys[pygame.K_9] and pygame.mixer.music.get_volume() > 0.0:
+            pygame.mixer.music.set_volume(pygame.mixer.music.get_volume() - 0.01)
+            self.screen.blit(VOL_MIN, (self.x_pos_volume, self.y_pos_volume))
+
+        elif keys[pygame.K_9] and pygame.mixer.music.get_volume() == 0.0:
+            self.screen.blit(VOL_MUTE, (self.x_pos_volume, self.y_pos_volume))
+        
+        if keys[pygame.K_0] and pygame.mixer.music.get_volume() < 1.0:
+                 pygame.mixer.music.set_volume(pygame.mixer.music.get_volume() + 0.01)
+                 self.screen.blit(VOL_UP, (self.x_pos_volume, self.y_pos_volume))
+
+        elif keys [pygame.K_0] and pygame.mixer.music.get_volume() == 1.0:
+                self.screen.blit(VOL_MAX, (self.x_pos_volume, self.y_pos_volume))
+
+        elif keys[pygame.K_m]:
+                pygame.mixer.music.set_volume(0.0)
+                self.screen.blit(VOL_MUTE, (self.x_pos_volume, self.y_pos_volume))
+
+        elif keys[pygame.K_COMMA]:
+                pygame.mixer.music.set_volume(1.0)
+                self.screen.blit(VOL_MAX, (self.x_pos_volume, self.y_pos_volume))
+
+        pygame.display.update()

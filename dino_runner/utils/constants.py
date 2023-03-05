@@ -70,3 +70,10 @@ BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
 HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
 
 DEFAULT_TYPE = "default"
+
+
+# Volume
+VOL_MAX = pygame.image.load(os.path.join(IMG_DIR, 'Other/Vol_Max.png'))
+VOL_MIN = pygame.image.load(os.path.join(IMG_DIR, 'Other/Vol_Min.png'))
+VOL_MUTE = pygame.image.load(os.path.join(IMG_DIR, 'Other/Vol_Mute.png'))
+VOL_UP = pygame.image.load(os.path.join(IMG_DIR, 'Other/Vol_Up.png'))
