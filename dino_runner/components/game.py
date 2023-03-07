@@ -4,6 +4,7 @@ from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, T
 from dino_runner.components.dinosaur import Dinosaur
 from dino_runner.components.obstacles.obstacle_manager import ObstacleManager
 
+
 class Game:
     def __init__(self):
         pygame.init()
@@ -50,6 +51,7 @@ class Game:
         user_Input = pygame.key.get_pressed()
         self.player.update(user_Input)
         self.obstacle_manager.update(self)
+        
 
     def draw(self):
         self.clock.tick(FPS)
@@ -72,7 +74,7 @@ class Game:
         self.x_pos_bg -= self.game_speed
     
 
-    def config_vol(self):
+    def config_vol(self):       #CONFIGURACION VOLUMEN 
         keys = pygame.key.get_pressed()
 
         if keys[pygame.K_9] and pygame.mixer.music.get_volume() > 0.0:

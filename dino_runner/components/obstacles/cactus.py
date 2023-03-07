@@ -7,3 +7,14 @@ class Cactus(Obstacle):     #Hereda el comportamiento de Obstacle
         self.type = random.randint(0,2)                 #Genera un numero random(aleatorio) de 0 a 2 incluyendo el mismo
         super().__init__(image, self.type)              #Llama al constructor de la clase padre(Obstacle)
         self.rect.y = 325
+
+
+
+class LargeCactus(Obstacle):
+    def __init__(self, image):
+        self.type = random.randint(0,2)                
+        super().__init__(image, self.type)             
+        self.rect.y = 300
+
+
+
