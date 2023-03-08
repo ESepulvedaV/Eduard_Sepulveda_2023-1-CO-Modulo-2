@@ -31,6 +31,7 @@ class Menu:
                 game.playing = False
             elif event.type == pygame.KEYDOWN:
                 game.run()
+                
 
     def update_message(self, message):
         self.text = self.font.render(message, True, (0, 0, 0))
