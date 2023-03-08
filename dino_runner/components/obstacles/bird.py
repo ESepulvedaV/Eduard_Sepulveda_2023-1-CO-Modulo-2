@@ -5,7 +5,7 @@ from dino_runner.components.obstacles.obstacle import Obstacle
 
 
 class Bird(Obstacle):
-    BIRD_HEIGHTS = [250, 290, 320]
+    BIRD_HEIGHTS = [220, 280, 310]
 
     def __init__(self, image):
         self.type = 0 
