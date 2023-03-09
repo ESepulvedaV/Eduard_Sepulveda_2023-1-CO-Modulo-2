@@ -11,6 +11,8 @@ class PowerUpManager:
         self.duration = random.randint(3, 5)
 
     def generate_power_up(self):
+        power_up = random.randint(0,1)
+        
         if random.randint(0,1) == 0: 
             self.when_appears += random.randint(200, 300)
             power_up = Shield()

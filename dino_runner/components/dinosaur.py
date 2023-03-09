@@ -2,8 +2,7 @@ import pygame
 from pygame.sprite import Sprite
 
 from dino_runner.utils.constants import RUNNING, JUMPING, DUCKING, RUNNING_SHIELD, DUCKING_SHIELD, JUMPING_SHIELD, DEFAULT_TYPE, SHIELD_TYPE, HAMMER_TYPE, DUCKING_HAMMER, JUMPING_HAMMER, RUNNING_HAMMER
-from dino_runner.components.power_ups.shoot import Shoot
-from dino_runner.utils.constants import SCREEN_WIDTH
+
 
 RUN_IMG = { DEFAULT_TYPE: RUNNING, SHIELD_TYPE: RUNNING_SHIELD, HAMMER_TYPE: RUNNING_HAMMER}
 JUM_IMG = { DEFAULT_TYPE: JUMPING, SHIELD_TYPE: JUMPING_SHIELD, HAMMER_TYPE: JUMPING_HAMMER}
@@ -58,9 +57,6 @@ class Dinosaur (Sprite):
             self.dino_run = True 
             self.dino_duck = False
 
-        if user_Input[pygame.K_z]:
-            self.proyectile()
-
         if self.step_index >= 10:
             self.step_index = 0
 
@@ -102,9 +98,7 @@ class Dinosaur (Sprite):
         self.dino_duck = False
         self.jump_speed = self.JUMP_SPEED
 
-    def proyectile(self):
-        proyectile_height = 10
-        self.shoot = Shoot(self.X_POS, SCREEN_WIDTH // 2 - proyectile_height // 2)
+
  
         
         
